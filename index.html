@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Tracking Dashboard</title>
+</head>
+<style>
+
+    @import url(
+    'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rubik:ital,wght@0,300;0,400;0,500;1,400&display=swap'
+    );
+
+    * {
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #0E1323;
+        color: #FFFFFF;
+    }
+
+    .container {
+        display: grid;
+        margin: calc(100 * 253vh / 1024) auto 0;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-row-gap: calc(30*100vw/1440);
+        width: 90%;
+        height: calc(636 / 1024 * 518px);
+    }
+
+    .container > div {
+        width: calc(255 * 100vw / 1440);
+        min-width: 200px;
+    }
+
+    .profile-card {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        background-color: #1C204B;
+        border-radius: 0.5vw;
+    }
+
+    .profile-top {
+        border-radius: 0.5vw;
+        background-color: #5747EA;
+        padding-bottom: calc(80 * 100vh / 1024);
+    }
+
+    .user-profile-pic {
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        border: 2px solid white;
+        margin-left: calc(32 * 100vw / 1440);
+        margin-top: calc(37 * 100vh / 1024);
+    }
+
+    .report-for {
+        color: #BBC0FF;
+        font-size: calc(15px * 636 / 1024);
+        margin-top: calc(43 * 100vh / 1024);
+        margin-left: calc(32 * 100vw / 1440);
+        line-height: calc(18px * 636 / 1024);
+    }
+
+    .user-name {
+        font-weight: 300;
+        font-size: calc(40px * 636 / 1024);
+        margin-left: calc(32 * 100vw / 1440);
+        line-height: calc(47px * 636 / 1024);
+    }
+
+    .period-selection {
+
+    }
+
+    .period-options {
+        color: #7078C9;
+        list-style-type: none;
+        margin-left: calc(32 * 100vw / 1440);
+        margin-bottom: calc(32 * 100vh / 1024);
+        margin-top: calc(26 * 100vh / 1024);
+        padding: 0;
+    }
+
+    .period-options > li {
+        margin-bottom: calc(21 * 100vh / 1014);
+    }
+
+    .period-options-selected {
+        color: #FFFFFF;
+    }
+
+    .time-track-card {
+        border-radius: 10px;
+        border-bottom: none;
+    }
+
+    .time-track-top {
+        background-repeat: no-repeat;
+        background-size: calc(78 * 100vh / 1014);
+        background-position-y: 27%;
+        background-position-x: 95%;
+        width: calc(255 * 100vw / 1440);
+        height: calc(45 * 100vh / 1024);
+    }
+
+    .card-work {
+        background-color: #FF8B64;
+    }
+
+    .top-work {
+        background-image: url("assets/icons/icon-work.svg");
+
+    }
+
+    .card-play {
+        background-color: #55C2E6
+    }
+
+    .top-play {
+        background-image: url("assets/icons/icon-play.svg");
+    }
+
+    .card-study {
+        background-color: #FF5E7D;
+    }
+
+    .top-study {
+        background-image: url("assets/icons/icon-study.svg");
+    }
+
+    .card-exercise {
+        background-color: #4BCF82;
+    }
+
+    .top-exercise {
+        background-image: url("assets/icons/icon-exercise.svg");
+    }
+
+    .card-social {
+        background-color: #7335D2;
+    }
+
+    .top-social {
+        background-image: url("assets/icons/icon-social.svg");
+    }
+
+    .card-self-care {
+        background-color: #F1C75B;
+    }
+
+    .top-self-care {
+        background-image: url("assets/icons/icon-self-care.svg");
+
+    }
+
+    .time-track-content {
+        background-color: #1C204B;
+        padding-top: calc(29 * 100vh / 1024);
+        border-radius: 10px;
+        height: calc(100% - calc(45 * 100vh / 1024));
+        box-shadow: 0 0 0 1px #1C204B
+    }
+
+    .time-track-content > div {
+        margin-left: calc(30 * 100vw / 1440);
+    }
+
+    .time-track-title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        width: calc(190 * 100vw / 1440);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .time-track-current-value {
+
+        font-style: normal;
+        font-weight: 300;
+        font-size: 56px;
+        line-height: 66px;
+        margin-top: calc(24 * 100vh / 1024)
+
+    }
+
+    .time-track-previous-value {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 18px;
+        color: #BBC0FF;
+        margin-top: calc(8*100vh/1024);
+        margin-bottom: calc(32*100vh/1024)
+    }
+</style>
+<body>
+<div class="container">
+    <div class="profile-card">
+        <div class="profile-top">
+            <img class="user-profile-pic" src="assets/image-jeremy.png" alt="Profile Picture">
+            <p class="report-for">Report for</p>
+            <p class="user-name">Jeremy <br/> Robson</p>
+        </div>
+        <div class="period-selection">
+            <ul class="period-options">
+                <li>Daily</li>
+                <li class="period-options-selected">Weekly</li>
+                <li>Monthly</li>
+            </ul>
+        </div>
+    </div>
+    <div class="time-track-card card-work">
+        <div class="time-track-top top-work"></div>
+        <div class="time-track-content">
+            <div class="time-track-title">
+                Work
+                <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
+                                             alt="three dots"></div>
+            </div>
+            <div class="time-track-current-value">
+                32hrs
+            </div>
+            <div class="time-track-previous-value">
+                Last Week - 36hrs
+            </div>
+        </div>
+    </div>
+    <div class="time-track-card card-play">
+        <div class="time-track-top top-play"></div>
+        <div class="time-track-content">
+            <div class="time-track-title">
+                Play
+                <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
+                                             alt="three dots"></div>
+            </div>
+            <div class="time-track-current-value">
+                10hrs
+            </div>
+            <div class="time-track-previous-value">
+                Last Week - 8hrs
+            </div>
+        </div>
+    </div>
+    <div class="time-track-card card-study">
+        <div class="time-track-top top-study"></div>
+        <div class="time-track-content">
+            <div class="time-track-title">
+                Study
+                <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
+                                             alt="three dots"></div>
+            </div>
+            <div class="time-track-current-value">
+                4hrs
+            </div>
+            <div class="time-track-previous-value">
+                Last Week - 7hrs
+            </div>
+        </div>
+    </div>
+    <div class="time-track-card card-exercise">
+        <div class="time-track-top top-exercise"></div>
+        <div class="time-track-content">
+            <div class="time-track-title">
+                Exercise
+                <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
+                                             alt="three dots"></div>
+            </div>
+            <div class="time-track-current-value">
+                4hrs
+            </div>
+            <div class="time-track-previous-value">
+                Last Week - 5hrs
+            </div>
+        </div>
+    </div>
+    <div class="time-track-card card-social">
+        <div class="time-track-top top-social"></div>
+        <div class="time-track-content">
+            <div class="time-track-title">
+                Social
+                <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
+                                             alt="three dots"></div>
+            </div>
+            <div class="time-track-current-value">
+                5hrs
+            </div>
+            <div class="time-track-previous-value">
+                Last Week - 10hrs
+            </div>
+        </div>
+    </div>
+    <div class="time-track-card card-self-care">
+        <div class="time-track-top top-self-care"></div>
+        <div class="time-track-content">
+            <div class="time-track-title">
+                Self Care
+                <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
+                                             alt="three dots"></div>
+            </div>
+            <div class="time-track-current-value">
+                2hrs
+            </div>
+            <div class="time-track-previous-value">
+                Last Week - 2hrs
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -48,8 +48,12 @@
         border-radius: 0.5vw;
         background-color: #5747EA;
         padding-bottom: calc(80 * 100vh / 1024);
+        display: flex;
+        flex-flow: column wrap;
     }
-
+    .profile-top > p {
+        margin-left: calc(32 * 100vw / 1440);
+    }
     .user-profile-pic {
         width: 78px;
         height: 78px;
@@ -60,35 +64,34 @@
     }
 
     .report-for {
+        display: block;
         color: #BBC0FF;
         font-size: calc(15px * 636 / 1024);
         margin-top: calc(43 * 100vh / 1024);
-        margin-left: calc(32 * 100vw / 1440);
         line-height: calc(18px * 636 / 1024);
     }
 
     .user-name {
+        display: block;
         font-weight: 300;
         font-size: calc(40px * 636 / 1024);
-        margin-left: calc(32 * 100vw / 1440);
         line-height: calc(47px * 636 / 1024);
     }
 
     .period-selection {
-
+        padding: 50px;
     }
 
     .period-options {
         color: #7078C9;
         list-style-type: none;
-        margin-left: calc(32 * 100vw / 1440);
-        margin-bottom: calc(32 * 100vh / 1024);
-        margin-top: calc(26 * 100vh / 1024);
+        font-size: 20px;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
         padding: 0;
-    }
-
-    .period-options > li {
-        margin-bottom: calc(21 * 100vh / 1014);
+        margin-top: 20px;
+        min-height: 100px;
     }
 
     .period-options-selected {
@@ -200,14 +203,54 @@
         margin-top: calc(8*100vh/1024);
         margin-bottom: calc(32*100vh/1024)
     }
+
+    @media only screen and (max-width: 1000px) {
+        .container {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    @media only screen and (max-width: 713px) {
+        .container {
+            grid-template-columns: 1fr;
+
+        }
+        .container > div {
+            width: 325px;
+            margin: 0 auto;
+        }
+        .profile-top {
+            display: flex;
+            align-content: center;
+            justify-content: flex-start;
+            padding-bottom: 10px;
+        }
+        .profile-top > p {
+            margin-left: 0;
+        }
+        .user-profile-pic {
+            margin-left: 0;
+        }
+        .period-selection {
+            padding: 20px;
+        }
+        .period-options {
+            margin: 0;
+            flex-flow: row wrap;
+            min-height: 0px;
+        }
+    }
 </style>
 <body>
 <div class="container">
     <div class="profile-card">
         <div class="profile-top">
             <img class="user-profile-pic" src="assets/image-jeremy.png" alt="Profile Picture">
-            <p class="report-for">Report for</p>
-            <p class="user-name">Jeremy <br/> Robson</p>
+            <p>
+                <span class="report-for">Report for</span>
+                <span class="user-name">Jeremy <br> Robson</span>
+            </p>
+
         </div>
         <div class="period-selection">
             <ul class="period-options">

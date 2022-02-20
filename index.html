@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Time Tracking Dashboard</title>
+    <script src="scripts.js"></script>
 </head>
 <style>
 
@@ -93,7 +94,9 @@
         margin-top: 20px;
         min-height: 100px;
     }
-
+    .period-options > li:hover {
+        cursor: pointer;
+    }
     .period-options-selected {
         color: #FFFFFF;
     }
@@ -254,9 +257,9 @@
         </div>
         <div class="period-selection">
             <ul class="period-options">
-                <li>Daily</li>
-                <li class="period-options-selected">Weekly</li>
-                <li>Monthly</li>
+                <li id="daily">Daily</li>
+                <li id="weekly" class="period-options-selected">Weekly</li>
+                <li id="monthly" >Monthly</li>
             </ul>
         </div>
     </div>
@@ -268,10 +271,10 @@
                 <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
                                              alt="three dots"></div>
             </div>
-            <div class="time-track-current-value">
+            <div id="work-current" class="time-track-current-value">
                 32hrs
             </div>
-            <div class="time-track-previous-value">
+            <div id="work-previous" class="time-track-previous-value">
                 Last Week - 36hrs
             </div>
         </div>
@@ -284,10 +287,10 @@
                 <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
                                              alt="three dots"></div>
             </div>
-            <div class="time-track-current-value">
+            <div id="play-current" class="time-track-current-value">
                 10hrs
             </div>
-            <div class="time-track-previous-value">
+            <div id="play-previous" class="time-track-previous-value">
                 Last Week - 8hrs
             </div>
         </div>
@@ -300,10 +303,10 @@
                 <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
                                              alt="three dots"></div>
             </div>
-            <div class="time-track-current-value">
+            <div id="study-current" class="time-track-current-value">
                 4hrs
             </div>
-            <div class="time-track-previous-value">
+            <div id="study-previous" class="time-track-previous-value">
                 Last Week - 7hrs
             </div>
         </div>
@@ -316,10 +319,10 @@
                 <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
                                              alt="three dots"></div>
             </div>
-            <div class="time-track-current-value">
+            <div id="exercise-current" class="time-track-current-value">
                 4hrs
             </div>
-            <div class="time-track-previous-value">
+            <div id="exercise-previous" class="time-track-previous-value">
                 Last Week - 5hrs
             </div>
         </div>
@@ -332,10 +335,10 @@
                 <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
                                              alt="three dots"></div>
             </div>
-            <div class="time-track-current-value">
+            <div id="social-current" class="time-track-current-value">
                 5hrs
             </div>
-            <div class="time-track-previous-value">
+            <div id="social-previous" class="time-track-previous-value">
                 Last Week - 10hrs
             </div>
         </div>
@@ -348,10 +351,10 @@
                 <div class="title-item"><img class="time-track-title-ellipsis" src="assets/icon-ellipsis.svg"
                                              alt="three dots"></div>
             </div>
-            <div class="time-track-current-value">
+            <div id="self-care-current" class="time-track-current-value">
                 2hrs
             </div>
-            <div class="time-track-previous-value">
+            <div id="self-care-previous" class="time-track-previous-value">
                 Last Week - 2hrs
             </div>
         </div>
